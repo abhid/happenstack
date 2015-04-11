@@ -41,14 +41,15 @@ ActiveRecord::Schema.define(version: 20150411030123) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
+    t.string   "name",         limit: 255
+    t.text     "description",  limit: 65535
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer  "band_id",     limit: 4
-    t.integer  "venue_id",    limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "band_id",      limit: 4
+    t.integer  "venue_id",     limit: 4
+    t.string   "cover_charge", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "events", ["band_id"], name: "index_events_on_band_id", using: :btree
@@ -75,12 +76,11 @@ ActiveRecord::Schema.define(version: 20150411030123) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "venues", force: :cascade do |t|
-    t.string   "names",      limit: 255
+    t.string   "name",       limit: 255
     t.text     "address",    limit: 65535
     t.string   "city",       limit: 255
     t.string   "state",      limit: 255
     t.string   "zipcode",    limit: 255
-    t.string   "categories", limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end

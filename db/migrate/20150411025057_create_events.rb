@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :end_time
       t.references :band, index: true
       t.references :venue, index: true
+      t.string :cover_charge
 
       t.timestamps null: false
     end

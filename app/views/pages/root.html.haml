@@ -1,0 +1,72 @@
+#events.ui.grid.centered.padded
+  .column.twelve.wide
+    .ui.stackable.three.column.grid
+      .column
+        %h3 Today
+        .ui.cards
+          - Event.events_on(Time.now).each do |event|
+            .card.event
+              .content
+                .header= event.name
+                .meta= "#{event.band.name} @ #{event.venue.name}"
+              .extra.content
+                = event.start_time.strftime("%I:%M %p")
+                %a{:href => "https://twitter.com/home/?status=Join me at #{event.name} @ellipsisduluth", :target => "_blank", :class => "right floated"}
+                  %i.icon.twitter
+      .column
+        %h3 Tomorrow
+        .ui.cards
+          - Event.events_on(Time.now + 1.day).each do |event|
+            .card.event
+              .content
+                .header= event.name
+                .meta= "#{event.band.name} @ #{event.venue.name}"
+              .extra.content
+                = event.start_time.strftime("%I:%M %p")
+                %a{:href => "http://twitter.com/home/?status=Join me at #{event.name} @ellipsisduluth", :target => "_blank", :class => "right floated"}
+                  %i.icon.twitter
+      .column
+        %h3 Later this week
+        .ui.styled.accordion
+          .title
+            %i.dropdown.icon
+            = (Time.now.midnight + 2.days).strftime("%A %B %-d")
+          .content
+            - Event.events_on(Time.now + 2.days).each do |event|
+              %h4= event.name
+              = "#{event.band.name} @ #{event.venue.name}"
+          .title
+            %i.dropdown.icon
+            = (Time.now.midnight + 3.days).strftime("%A %B %-d")
+          .content
+            - Event.events_on(Time.now + 3.days).each do |event|
+              %h4= event.name
+              = "#{event.band.name} @ #{event.venue.name}"
+          .title
+            %i.dropdown.icon
+            = (Time.now.midnight + 4.days).strftime("%A %B %-d")
+          .content
+            - Event.events_on(Time.now + 4.days).each do |event|
+              %h4= event.name
+              = "#{event.band.name} @ #{event.venue.name}"
+          .title
+            %i.dropdown.icon
+            = (Time.now.midnight + 5.days).strftime("%A %B %-d")
+          .content
+            - Event.events_on(Time.now + 5.days).each do |event|
+              %h4= event.name
+              = "#{event.band.name} @ #{event.venue.name}"
+          .title
+            %i.dropdown.icon
+            = (Time.now.midnight + 6.days).strftime("%A %B %-d")
+          .content
+            - Event.events_on(Time.now + 6.days).each do |event|
+              %h4= event.name
+              = "#{event.band.name} @ #{event.venue.name}"
+          .title
+            %i.dropdown.icon
+            = (Time.now.midnight + 7.days).strftime("%A %B %-d")
+          .content
+            - Event.events_on(Time.now + 7.days).each do |event|
+              %h4= event.name
+              = "#{event.band.name} @ #{event.venue.name}"
